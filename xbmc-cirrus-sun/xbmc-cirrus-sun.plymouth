@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC Cirrus-Sun
+Description=This theme is a template to build on
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-cirrus-sun
+ScriptFile=/lib/plymouth/themes/xbmc-cirrus-sun/xbmc-cirrus-sun.script
+
