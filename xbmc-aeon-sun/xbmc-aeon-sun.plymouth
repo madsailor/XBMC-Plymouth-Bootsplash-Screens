@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC Aeon-Sun
+Description=This theme is a template to build on
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-aeon-sun
+ScriptFile=/lib/plymouth/themes/xbmc-aeon-sun/xbmc-aeon-sun.script
+

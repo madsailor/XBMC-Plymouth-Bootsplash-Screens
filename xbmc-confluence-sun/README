@@ -1,0 +1,27 @@
+xbmc-confluence-sun by madsailor
+
+based on space-sunrise by Andre "Osku" Schmidt, public domain, or what ever...
+
+installation
+============
+1)Copy the xbmc-confluence-sun folder to /lib/plymouth/themes
+2)run: sudo update-alternatives --install /lib/plymouth/themes/default.plymouth default.plymouth /lib/plymouth/themes/xbmc-confluence-sun/xbmc-confluence-sun.plymouth 100
+3)run: sudo update-alternatives --config default.plymouth , and choose the xbmc-confluence-sun theme
+4)run: sudo update-initramfs -u
+5)Enjoy!
+
+
+code notes
+==========
+
+the "offset" variable is used to set the y position of the xbmc logo. 
+0 would be center, positive values go down and negative to top of screen.
+(all parts should use this offset)
+
+if you scroll past the image/sprite definitions, you see some *.start and
+*.end values. those say at which "progress-time" (from 0 to 1) that part
+will be faded in. 
+
+sunGlow also has .animStart/End "progress-time", to say when to move from
+.startPos to .endPos on the screen
+

@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC Confluence-Sun
+Description=This theme is a template to build on
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-confluence-sun
+ScriptFile=/lib/plymouth/themes/xbmc-confluence-sun/xbmc-confluence-sun.script
+

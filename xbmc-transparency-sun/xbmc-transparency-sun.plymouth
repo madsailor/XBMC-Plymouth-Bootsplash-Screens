@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC Transparency-Sun
+Description=This theme is a template to build on
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-transparency-sun
+ScriptFile=/lib/plymouth/themes/xbmc-transparency-sun/xbmc-transparency-sun.script
+
