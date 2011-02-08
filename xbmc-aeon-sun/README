@@ -1,4 +1,4 @@
-xbmc-aeon-sun by madsailor
+xbmc-aeon-sun v0.2 by madsailor
 
 based on space-sunrise by Andre "Osku" Schmidt, public domain, or what ever...
 
@@ -13,7 +13,7 @@ installation
 code notes
 ==========
 
-the "offset" variable is used to set the y position of the xbmc logo. 
+the "offset" variable is used to set the y position of the sun. 
 0 would be center, positive values go down and negative to top of screen.
 
 if you scroll past the image/sprite definitions, you see some *.start and

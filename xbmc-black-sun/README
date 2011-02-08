@@ -1,4 +1,4 @@
-xbmc-black-sun by madsailor
+xbmc-black-sun v0.2 by madsailor
 
 based on space-sunrise by Andre "Osku" Schmidt, public domain, or what ever...
 
@@ -14,7 +14,7 @@ installation
 code notes
 ==========
 
-the "offset" variable is used to set the y position of the xbmc logo. 
+the "offset" variable is used to set the y position of the sun. 
 0 would be center, positive values go down and negative to top of screen.
 (all parts should use this offset)
 
