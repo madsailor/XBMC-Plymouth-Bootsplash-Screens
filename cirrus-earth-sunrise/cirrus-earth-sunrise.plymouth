@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= Cirrus Earth Sunrise
+Description= XBMC logo as earth customized for the cirrus skin
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/cirrus-earth-sunrise
+ScriptFile=/lib/plymouth/themes/cirrus-earth-sunrise/cirrus-earth-sunrise.script
+

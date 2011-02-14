@@ -1,0 +1,179 @@
+win_width = Window.GetWidth();
+win_height = Window.GetHeight();
+ww_half = win_width / 2;
+wh_half = win_height / 2;
+
+sunheight_offset = 0;
+mediaheight_offset = 0;
+
+//==================start xbmc logo 
+
+sourceImage = Image ("x.png");
+x_width = sourceImage.GetWidth();
+x_height = sourceImage.GetHeight();
+x_scale = (win_height / (x_height * 6));
+newx_width = x_width * x_scale;
+newx_height = x_height * x_scale;
+scaledImage = sourceImage.Scale (newx_width, newx_height);
+xLogo.sprite = Sprite (scaledImage);
+xLogo.sprite.SetY (wh_half - (newx_height / 2));
+xLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("b.png");
+b_width = sourceImage.GetWidth();
+b_height = sourceImage.GetHeight();
+b_scale = (win_height / (b_height * 6));
+newb_width = b_width * b_scale;
+newb_height = b_height * b_scale;
+scaledImage = sourceImage.Scale (newb_width, newb_height);
+bLogo.sprite = Sprite (scaledImage);
+bLogo.sprite.SetY (wh_half - (newb_height / 2));
+bLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("m.png");
+m_width = sourceImage.GetWidth();
+m_height = sourceImage.GetHeight();
+m_scale = (win_height / (m_height * 6));
+newm_width = m_width * m_scale;
+newm_height = m_height * m_scale;
+scaledImage = sourceImage.Scale (newm_width, newm_height);
+mLogo.sprite = Sprite (scaledImage);
+mLogo.sprite.SetY (wh_half - (newm_height / 2));
+mLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("c.png");
+c_width = sourceImage.GetWidth();
+c_height = sourceImage.GetHeight();
+c_scale = (win_height / (c_height * 6));
+newc_width = c_width * c_scale;
+newc_height = c_height * c_scale;
+scaledImage = sourceImage.Scale (newc_width, newc_height);
+cLogo.sprite = Sprite (scaledImage);
+cLogo.sprite.SetY (wh_half - (newc_height / 2));
+cLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("media_center.png");
+media_width = sourceImage.GetWidth();
+media_height = sourceImage.GetHeight();
+media_scale = (win_height / (media_height * 24));
+newmedia_width = media_width * media_scale;
+newmedia_height = media_height * media_scale;
+scaledImage = sourceImage.Scale (newmedia_width, newmedia_height);
+mediaCenter.sprite = Sprite (scaledImage);
+mediaCenter.sprite.SetY (wh_half + (newb_height / 2) + (newmedia_height / 2) + mediaheight_offset);
+mediaCenter.sprite.SetOpacity (1);
+
+//=================== end logo
+
+sourceImage = Image ("sun_glow.png");
+sun_width = sourceImage.GetWidth();
+sun_height = sourceImage.GetHeight();
+sun_scale = (win_height / (sun_height * 8));
+newsun_width = sun_width * sun_scale;
+newsun_height = sun_height * sun_scale;
+scaledImage = sourceImage.Scale (newsun_width, newsun_height);
+sunGlow.sprite = Sprite (scaledImage);
+sunGlow.sprite.SetY (wh_half - (newb_height / 2) - (newsun_height / 2) + sunheight_offset);
+sunGlow.sprite.SetOpacity (1);
+
+sourceImage = Image ("cirrus.png");
+cirrus_width = sourceImage.GetWidth();
+cirrus_height = sourceImage.GetHeight();
+cirrus_scale = (win_height / (cirrus_height * 8));
+newcirrus_width = cirrus_width * cirrus_scale;
+newcirrus_height = cirrus_height * cirrus_scale;
+scaledImage = sourceImage.Scale (newcirrus_width, newcirrus_height);
+cirrus.sprite = Sprite (scaledImage);
+cirrus.sprite.SetX (ww_half + (ww_half / 2));
+cirrus.sprite.SetOpacity (1);
+
+//============= start logo animation values
+
+xLogo.animStart = 0;
+xLogo.animEnd = 1;
+xLogo.startPos = win_width - (ww_half / 2);
+xLogo.endPos = ww_half - newb_width - newx_width; 
+
+bLogo.animStart = 0;
+bLogo.animEnd = 1;
+bLogo.startPos = win_width - (ww_half / 2);
+bLogo.endPos = ww_half - newb_width;
+
+mLogo.animStart = 0;
+mLogo.animEnd = 1;
+mLogo.startPos = win_width - (ww_half / 2);
+mLogo.endPos = ww_half;
+
+cLogo.animStart = 0;
+cLogo.animEnd = 1;
+cLogo.startPos = win_width - (ww_half / 2);
+cLogo.endPos = ww_half + newm_width;
+
+mediaCenter.animStart = 0;
+mediaCenter.animEnd = 1;
+mediaCenter.startPos = ww_half + (newb_width / 2) + (newmedia_width / 2);
+mediaCenter.endPos = ww_half - (newmedia_width / 2);
+
+//============= end logo animation values
+
+sunGlow.animStart = 0;
+sunGlow.animEnd = 1;
+sunGlow.startPos = (ww_half / 2);
+sunGlow.endPos = ww_half + newm_width + (newc_width / 2);
+
+cirrus.animStart = 0;
+cirrus.animEnd = 1;
+cirrus.startPos = wh_half;// + (wh_half / 2);
+cirrus.endPos = wh_half + (wh_half / 2);
+
+fun remap (val, imin, imax, omin, omax) {
+    return (((val - imin) / (imax - imin)) * (omax - omin)) + omin;
+}
+
+fun progress_callback (d, p) {
+
+    p = (p * 100.0) / 15.0;
+
+//=================== start logo remap functions
+
+    if (p >= xLogo.animStart && p <= xLogo.animEnd) {
+        a = remap (p, xLogo.animStart, xLogo.animEnd, 0, 1);
+        b = xLogo.startPos - ((xLogo.startPos - xLogo.endPos) * a);
+        xLogo.sprite.SetX (b);
+    }
+    if (p >= bLogo.animStart && p <= bLogo.animEnd) {
+        a = remap (p, bLogo.animStart, bLogo.animEnd, 0, 1);
+        b = bLogo.startPos - ((bLogo.startPos - bLogo.endPos) * a);
+        bLogo.sprite.SetX (b);
+    }
+    if (p >= mLogo.animStart && p <= mLogo.animEnd) {
+        a = remap (p, mLogo.animStart, mLogo.animEnd, 0, 1);
+        b = mLogo.startPos - ((mLogo.startPos - mLogo.endPos) * a);
+        mLogo.sprite.SetX (b);
+    }
+    if (p >= cLogo.animStart && p <= cLogo.animEnd) {
+        a = remap (p, cLogo.animStart, cLogo.animEnd, 0, 1);
+        b = cLogo.startPos - ((cLogo.startPos - cLogo.endPos) * a);
+        cLogo.sprite.SetX (b);
+    }
+    if (p >= mediaCenter.animStart && p <= mediaCenter.animEnd) {
+        a = remap (p, mediaCenter.animStart, mediaCenter.animEnd, 0, 1);
+        b = mediaCenter.startPos - ((mediaCenter.startPos - mediaCenter.endPos) * a);
+        mediaCenter.sprite.SetX (b);
+    }
+//
+//=================== end logo remap functions
+//
+    if (p >= sunGlow.animStart && p <= sunGlow.animEnd) {
+        a = remap (p, sunGlow.animStart, sunGlow.animEnd, 0, 1);
+        b = sunGlow.startPos - ((sunGlow.startPos - sunGlow.endPos) * a);
+        sunGlow.sprite.SetX (b);
+    }
+    if (p >= cirrus.animStart && p <= cirrus.animEnd) {
+        a = remap (p, cirrus.animStart, cirrus.animEnd, 0, 1);
+        b = cirrus.startPos - ((cirrus.startPos - cirrus.endPos) * a);
+        cirrus.sprite.SetY (b);
+    }
+          
+}
+Plymouth.SetBootProgressFunction(progress_callback);
