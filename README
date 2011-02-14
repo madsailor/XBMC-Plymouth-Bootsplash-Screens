@@ -1,5 +1,8 @@
 To download these themes:
 ========================
+Click the download button at http://github.com/madsailor/XBMC-Plymouth-Bootsplash-Screens and choose tar.bz or zip archive and follow readme in the folder of the theme you want to install
+
+or
 
 1)Install git if you havn't already: sudo apt-get install git
 2)Run: cd ~/Desktop to change to your desktop directory (or use another convenient location)

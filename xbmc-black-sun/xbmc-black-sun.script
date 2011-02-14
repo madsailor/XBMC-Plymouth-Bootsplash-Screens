@@ -3,22 +3,28 @@ win_height = Window.GetHeight();
 ww_half = win_width / 2;
 wh_half = win_height / 2;
 
-sunheight_offset = 25;
+sunheight_offset = 0;
 
 sourceImage = Image ("xbmc_black.png");
-newxbmc_width = (win_width / sourceImage.GetWidth()) + (sourceImage.GetWidth() / 4);
-newxbmc_height = (win_height / sourceImage.GetHeight()) + (sourceImage.GetHeight() / 4);
+xbmc_width = sourceImage.GetWidth();
+xbmc_height = sourceImage.GetHeight();
+xbmc_scale = (win_height / (xbmc_height * 6));
+newxbmc_width = xbmc_width * xbmc_scale;
+newxbmc_height = xbmc_height * xbmc_scale;
 scaledImage = sourceImage.Scale (newxbmc_width, newxbmc_height);
 xbmcBlack.sprite = Sprite (scaledImage);
-xbmcBlack.sprite.SetY (wh_half - (newxbmc_height / 2));
+xbmcBlack.sprite.SetY (wh_half);
 xbmcBlack.sprite.SetOpacity (1);
 
 sourceImage = Image ("sun_glow.png");
-newsun_width = (win_width / sourceImage.GetWidth()) + (sourceImage.GetWidth() / 4);
-newsun_height = (win_height / sourceImage.GetHeight()) + (sourceImage.GetHeight() / 4);
+sun_width = sourceImage.GetWidth();
+sun_height = sourceImage.GetHeight();
+sun_scale = (win_height / (sun_height * 12));
+newsun_width = sun_width * sun_scale;
+newsun_height = sun_height * sun_scale;
 scaledImage = sourceImage.Scale (newsun_width, newsun_height);
 sunGlow.sprite = Sprite (scaledImage);
-sunGlow.sprite.SetY (wh_half - (newxbmc_height / 2) + sunheight_offset);
+sunGlow.sprite.SetY (wh_half + (newxbmc_height / 2) + sunheight_offset);
 sunGlow.sprite.SetOpacity (1);
 
 xbmcBlack.start = 0;
