@@ -1,0 +1,23 @@
+xbmc-simplicity-gears v0.1 by madsailor
+
+This theme is public domain.  Free to change, add, distribute or what ever...
+
+Installation
+============
+1)Copy the xbmc-simplicity-gears folder to /lib/plymouth/themes
+2)Run: sudo update-alternatives --install /lib/plymouth/themes/default.plymouth default.plymouth /lib/plymouth/themes/xbmc-simplicity-gears/xbmc-simplicity-gears.plymouth 100
+3)Run: sudo update-alternatives --config default.plymouth , and choose the xbmc-simplicity-gears theme
+4)Run: sudo update-initramfs -u
+5)Enjoy!
+
+Code Notes
+==========
+
+The "offset" variables are used to set the Y position of the 'media center' portion of the XBMC logo and belt. Y-up = smaller values, Y-down = larger values.
+
+The # variable in lines like 'b_scale = (win_height / (b_height * 6));' is a divisor of the vertical screen resolution. In this example the input graphic is scaled to be 1/6 of the screens vertical resolution. 
+
+If you scroll past the image/sprite definitions, you see some lines with *.animStart/End "progress-time".  These define when to move from .startPos to .endPos on the screen.
+
+If you want to fade in graphics at a certain time you may add some *.Start and
+*.End values (from 0 to 1) that will be recognized. ex: 'bLogo.Start = 0.5; bLogo.End = 1;'

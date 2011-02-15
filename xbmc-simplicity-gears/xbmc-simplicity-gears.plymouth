@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC Simplicity Gears
+Description= XBMC logo as gears customized for the simplicity skin
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-simplicity-gears
+ScriptFile=/lib/plymouth/themes/xbmc-simplicity-gears/xbmc-simplicity-gears.script
+

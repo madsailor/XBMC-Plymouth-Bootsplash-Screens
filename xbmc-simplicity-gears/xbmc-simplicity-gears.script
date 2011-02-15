@@ -1,0 +1,230 @@
+win_width = Window.GetWidth();
+win_height = Window.GetHeight();
+ww_half = win_width / 2;
+wh_half = win_height / 2;
+
+//==================start xbmc logo 
+
+sourceImage = Image ("x.png");
+x_height = sourceImage.GetHeight();
+x_scale = (win_height / (x_height * 6));
+newx_width = sourceImage.GetWidth() * x_scale;
+newx_height = x_height * x_scale;
+scaledImage = sourceImage.Scale (newx_width, newx_height);
+xLogo.sprite = Sprite (scaledImage);
+xLogo.sprite.SetY (wh_half - (newx_height / 2));
+xLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("b.png");
+b_height = sourceImage.GetHeight();
+b_scale = (win_height / (b_height * 6));
+newb_width = sourceImage.GetWidth() * b_scale;
+newb_height = b_height * b_scale;
+newbh_half = newb_height / 2;
+scaledImage = sourceImage.Scale (newb_width, newb_height);
+bLogo.sprite = Sprite (scaledImage);
+bLogo.sprite.SetY (wh_half - (newb_height / 2));
+bLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("m.png");
+m_height = sourceImage.GetHeight();
+m_scale = (win_height / (m_height * 6));
+newm_width = sourceImage.GetWidth() * m_scale;
+newm_height = m_height * m_scale;
+scaledImage = sourceImage.Scale (newm_width, newm_height);
+mLogo.sprite = Sprite (scaledImage);
+mLogo.sprite.SetY (wh_half - (newm_height / 2));
+mLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("c.png");
+c_height = sourceImage.GetHeight();
+c_scale = (win_height / (c_height * 6));
+newc_width = sourceImage.GetWidth() * c_scale;
+newc_height = c_height * c_scale;
+scaledImage = sourceImage.Scale (newc_width, newc_height);
+cLogo.sprite = Sprite (scaledImage);
+cLogo.sprite.SetY (wh_half - (newc_height / 2));
+cLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("media_center.png");
+media_height = sourceImage.GetHeight();
+media_scale = (win_height / (media_height * 24));
+newmedia_width = sourceImage.GetWidth() * media_scale;
+newmediaw_half = newmedia_width / 2;
+newmedia_height = media_height * media_scale;
+newmediah_half = newmedia_height / 2;
+scaledImage = sourceImage.Scale (newmedia_width, newmedia_height);
+mediaCenter.sprite = Sprite (scaledImage);
+mediaCenter.sprite.SetY (wh_half + newbh_half + newmediah_half);
+mediaCenter.sprite.SetOpacity (1);
+
+//=================== end logo
+
+sourceImage = Image ("belt.png");
+belt_height = sourceImage.GetHeight();
+belt_scale = (win_height / (belt_height * 24));
+newbelt_width = sourceImage.GetWidth() * belt_scale;
+newbelt_height = belt_height * belt_scale;
+newbelth_half = newbelt_height / 2;
+scaledImage = sourceImage.Scale (newbelt_width, newbelt_height);
+beltMove.sprite = Sprite (scaledImage);
+beltMove.sprite.SetY (wh_half + newbh_half + newmediah_half + newbelth_half);
+beltMove.sprite.SetOpacity (1);
+
+sourceImage = Image ("topgear.png");
+topgear_height = sourceImage.GetHeight();
+topgear_scale = (win_height / (topgear_height * 14));
+newtopgear_width = sourceImage.GetWidth() * topgear_scale;
+newtopgear_height = topgear_height * topgear_scale;
+newtopgearh_half = newtopgear_height / 2;
+topgearscaledImage = sourceImage.Scale (newtopgear_width, newtopgear_height);
+topgear.sprite = Sprite (topgearscaledImage);
+topgear.sprite.SetX (ww_half + newm_width);
+topgear.sprite.SetY (wh_half + newbh_half + newmediah_half + newbelt_height);
+topgear.sprite.SetOpacity (1);
+
+sourceImage = Image ("midgear.png");
+midgear_height = sourceImage.GetHeight();
+midgear_scale = (win_height / (midgear_height * 20));
+newmidgear_width = sourceImage.GetWidth() * midgear_scale;
+newmidgear_height = midgear_height * midgear_scale;
+newmidgearh_half = newmidgear_height / 2;
+midgearscaledImage = sourceImage.Scale (newmidgear_width, newmidgear_height);
+midgear.sprite = Sprite (midgearscaledImage);
+midgear.sprite.SetX (ww_half + newm_width + newtopgearh_half);
+midgear.sprite.SetY (wh_half + newbh_half + newmediah_half + newbelt_height + newtopgearh_half + newmidgearh_half);
+midgear.sprite.SetOpacity (1);
+
+sourceImage = Image ("sgear.png");
+sgear_width = sourceImage.GetWidth();
+sgear_height = sourceImage.GetHeight();
+sgear_scale = (win_height / (sgear_height * 2.8));
+newsgear_width = sgear_width * sgear_scale;
+newsgear_height = sgear_height * sgear_scale;
+sgearscaledImage = sourceImage.Scale (newsgear_width, newsgear_height);
+sgear.sprite = Sprite (sgearscaledImage);
+sgear.sprite.SetX (ww_half + newm_width - (newsgear_width / 4));
+sgear.sprite.SetY (wh_half + newbh_half + newmediah_half + newbelth_half + newtopgearh_half + newmidgear_height - (newsgear_height / 3.6));
+sgear.sprite.SetOpacity (1);
+
+sourceImage = Image ("simplicity.png");
+simplicity_height = sourceImage.GetHeight();
+simplicity_scale = (win_height / (simplicity_height * 12));
+newsimplicity_width = sourceImage.GetWidth() * simplicity_scale;
+newsimplicity_height = simplicity_height * simplicity_scale;
+simplicityscaledImage = sourceImage.Scale (newsimplicity_width, newsimplicity_height);
+simplicityLogo.sprite = Sprite (simplicityscaledImage);
+simplicityLogo.sprite.SetX (ww_half + newm_width + (newtopgear_width / 2) + (newmidgear_width / 4));
+simplicityLogo.sprite.SetY (wh_half + newbh_half + newmediah_half + newbelt_height + newtopgearh_half + newmidgearh_half + (newsimplicity_height / 2.2));
+simplicityLogo.sprite.SetOpacity (1);
+
+//============= start logo animation values
+
+xLogo.animStart = 0;
+xLogo.animEnd = 1;
+xLogo.startPos = - newb_width - newx_width;
+xLogo.endPos = ww_half - newb_width - newx_width; 
+
+bLogo.animStart = 0;
+bLogo.animEnd = 1;
+bLogo.startPos = - newb_width;
+bLogo.endPos = ww_half - newb_width;
+
+mLogo.animStart = 0;
+mLogo.animEnd = 1;
+mLogo.startPos = 0;
+mLogo.endPos = ww_half;
+
+cLogo.animStart = 0;
+cLogo.animEnd = 1;
+cLogo.startPos = newm_width;
+cLogo.endPos = ww_half + newm_width;
+
+mediaCenter.animStart = 0;
+mediaCenter.animEnd = 1;
+mediaCenter.startPos = 0 - newmediaw_half;
+mediaCenter.endPos = ww_half - newmediaw_half;
+
+//============= end logo animation values
+
+beltMove.animStart = 0;
+beltMove.animEnd = 1;
+beltMove.startPos = - newb_width - newx_width;
+beltMove.endPos = ww_half - newb_width - newx_width;
+
+sgear.spinStart = 0;
+sgear.spinEnd = 1;
+
+midgear.spinStart = 0;
+midgear.spinEnd = 1;
+
+topgear.spinStart = 0;
+topgear.spinEnd = 1;
+
+simplicityLogo.fadeinStart = 0.99;
+simplicityLogo.fadeinEnd = 1;
+
+fun remap (val, imin, imax, omin, omax) {
+    return (((val - imin) / (imax - imin)) * (omax - omin)) + omin;
+}
+
+fun progress_callback (d, p) {
+
+    p = (p * 100.0) / 15.0;
+
+//=================== start logo remap functions
+
+    if (p >= xLogo.animStart && p <= xLogo.animEnd) {
+        a = remap (p, xLogo.animStart, xLogo.animEnd, 0, 1);
+        b = xLogo.startPos - ((xLogo.startPos - xLogo.endPos) * a);
+        xLogo.sprite.SetX (b);
+    }
+    if (p >= bLogo.animStart && p <= bLogo.animEnd) {
+        a = remap (p, bLogo.animStart, bLogo.animEnd, 0, 1);
+        b = bLogo.startPos - ((bLogo.startPos - bLogo.endPos) * a);
+        bLogo.sprite.SetX (b);
+    }
+    if (p >= mLogo.animStart && p <= mLogo.animEnd) {
+        a = remap (p, mLogo.animStart, mLogo.animEnd, 0, 1);
+        b = mLogo.startPos - ((mLogo.startPos - mLogo.endPos) * a);
+        mLogo.sprite.SetX (b);
+    }
+    if (p >= cLogo.animStart && p <= cLogo.animEnd) {
+        a = remap (p, cLogo.animStart, cLogo.animEnd, 0, 1);
+        b = cLogo.startPos - ((cLogo.startPos - cLogo.endPos) * a);
+        cLogo.sprite.SetX (b);
+    }
+    if (p >= mediaCenter.animStart && p <= mediaCenter.animEnd) {
+        a = remap (p, mediaCenter.animStart, mediaCenter.animEnd, 0, 1);
+        b = mediaCenter.startPos - ((mediaCenter.startPos - mediaCenter.endPos) * a);
+        mediaCenter.sprite.SetX (b);
+    }
+//
+//=================== end logo remap functions
+//
+    if (p >= beltMove.animStart && p <= beltMove.animEnd) {
+        a = remap (p, beltMove.animStart, beltMove.animEnd, 0, 1);
+        b = beltMove.startPos - ((beltMove.startPos - beltMove.endPos) * a);
+        beltMove.sprite.SetX (b);
+    }
+    if (p >= sgear.spinStart && p <= sgear.spinEnd) {
+        a = remap (p, sgear.spinStart, sgear.spinEnd, 0, 1);
+        b = 2 * (Math.Pi * a);
+        sgear.sprite.SetImage (sgearscaledImage.Rotate(b));
+    }  
+    if (p >= midgear.spinStart && p <= midgear.spinEnd) {
+        a = remap (p, midgear.spinStart, midgear.spinEnd, 0, 1);
+        b = -2 * (Math.Pi * a);
+        midgear.sprite.SetImage (midgearscaledImage.Rotate(b));
+    } 
+    if (p >= topgear.spinStart && p <= topgear.spinEnd) {
+        a = remap (p, topgear.spinStart, topgear.spinEnd, 0, 1);
+        b = 2 * (Math.Pi * a);
+        topgear.sprite.SetImage (topgearscaledImage.Rotate(b));
+    }  
+    if (p >= simplicityLogo.fadeinStart && p <= simplicityLogo.fadeinEnd) {
+        a = remap (p, simplicityLogo.fadeinStart, simplicityLogo.fadeinEnd, 0.8, 1);
+        simplicityLogo.sprite.SetImage (simplicityscaledImage);
+    }  
+}
+Plymouth.SetBootProgressFunction(progress_callback);
