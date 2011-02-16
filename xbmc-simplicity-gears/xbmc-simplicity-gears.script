@@ -62,7 +62,7 @@ mediaCenter.sprite.SetOpacity (1);
 
 sourceImage = Image ("belt.png");
 belt_height = sourceImage.GetHeight();
-belt_scale = (win_height / (belt_height * 24));
+belt_scale = (win_height / (belt_height * 18));
 newbelt_width = sourceImage.GetWidth() * belt_scale;
 newbelt_height = belt_height * belt_scale;
 newbelth_half = newbelt_height / 2;
@@ -73,7 +73,7 @@ beltMove.sprite.SetOpacity (1);
 
 sourceImage = Image ("topgear.png");
 topgear_height = sourceImage.GetHeight();
-topgear_scale = (win_height / (topgear_height * 14));
+topgear_scale = (win_height / (topgear_height * 10.5));
 newtopgear_width = sourceImage.GetWidth() * topgear_scale;
 newtopgear_height = topgear_height * topgear_scale;
 newtopgearh_half = newtopgear_height / 2;
@@ -85,7 +85,7 @@ topgear.sprite.SetOpacity (1);
 
 sourceImage = Image ("midgear.png");
 midgear_height = sourceImage.GetHeight();
-midgear_scale = (win_height / (midgear_height * 20));
+midgear_scale = (win_height / (midgear_height * 15));
 newmidgear_width = sourceImage.GetWidth() * midgear_scale;
 newmidgear_height = midgear_height * midgear_scale;
 newmidgearh_half = newmidgear_height / 2;
@@ -98,7 +98,7 @@ midgear.sprite.SetOpacity (1);
 sourceImage = Image ("sgear.png");
 sgear_width = sourceImage.GetWidth();
 sgear_height = sourceImage.GetHeight();
-sgear_scale = (win_height / (sgear_height * 2.8));
+sgear_scale = (win_height / (sgear_height * 2.1));
 newsgear_width = sgear_width * sgear_scale;
 newsgear_height = sgear_height * sgear_scale;
 sgearscaledImage = sourceImage.Scale (newsgear_width, newsgear_height);
@@ -109,7 +109,7 @@ sgear.sprite.SetOpacity (1);
 
 sourceImage = Image ("simplicity.png");
 simplicity_height = sourceImage.GetHeight();
-simplicity_scale = (win_height / (simplicity_height * 12));
+simplicity_scale = (win_height / (simplicity_height * 9));
 newsimplicity_width = sourceImage.GetWidth() * simplicity_scale;
 newsimplicity_height = simplicity_height * simplicity_scale;
 simplicityscaledImage = sourceImage.Scale (newsimplicity_width, newsimplicity_height);
@@ -209,17 +209,17 @@ fun progress_callback (d, p) {
     }
     if (p >= sgear.spinStart && p <= sgear.spinEnd) {
         a = remap (p, sgear.spinStart, sgear.spinEnd, 0, 1);
-        b = 2 * (Math.Pi * a);
+        b = 4 * (Math.Pi * a);
         sgear.sprite.SetImage (sgearscaledImage.Rotate(b));
     }  
     if (p >= midgear.spinStart && p <= midgear.spinEnd) {
         a = remap (p, midgear.spinStart, midgear.spinEnd, 0, 1);
-        b = -2 * (Math.Pi * a);
+        b = -4 * (Math.Pi * a);
         midgear.sprite.SetImage (midgearscaledImage.Rotate(b));
     } 
     if (p >= topgear.spinStart && p <= topgear.spinEnd) {
         a = remap (p, topgear.spinStart, topgear.spinEnd, 0, 1);
-        b = 2 * (Math.Pi * a);
+        b = 4 * (Math.Pi * a);
         topgear.sprite.SetImage (topgearscaledImage.Rotate(b));
     }  
     if (p >= simplicityLogo.fadeinStart && p <= simplicityLogo.fadeinEnd) {
