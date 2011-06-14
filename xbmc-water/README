@@ -1,0 +1,20 @@
+xbmc-water v0.1 by madsailor
+
+This theme is public domain.  Free to change, add, distribute or what ever...
+
+Installation
+============
+1)Copy the xbmc-water folder to /lib/plymouth/themes
+2)Run: sudo update-alternatives --install /lib/plymouth/themes/default.plymouth default.plymouth /lib/plymouth/themes/xbmc-water/xbmc-water.plymouth 100
+3)Run: sudo update-alternatives --config default.plymouth , and choose the xbmc-water theme
+4)Run: sudo update-initramfs -u
+5)Enjoy!
+
+Code Notes
+==========
+Try changing the script to make a new theme...it's easy!  Open the .script file with a text editor (like notepad++ on Windows, TextWrangler on Mac or Gedit on Linux).  The code is now commented to help guide you through what's going on. Make your changes, then make a few small changes in the .plymouth file to point to your new script, and you have your own customized theme.
+
+If you are running on a linux system that uses the plymouth bootloader you can check the progress of your changes by running this command in a terminal:  
+sudo plymouthd; sudo plymouth --show-splash ; for ((I=0; I<10; I++)); do sudo plymouth --update=test$I ; sleep 1; done; sudo plymouth quit
+
+

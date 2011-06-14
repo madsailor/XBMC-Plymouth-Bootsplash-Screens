@@ -1,0 +1,127 @@
+/******************************************************************************* 
+*XBMC-H2O Plymouth Script
+*Displays the XBMC Logo as the traditional element water while booting. 
+*This script is free software.  Use as you see fit.  No warranty included.
+*******************************************************************************/
+
+// get the current resolution
+win_width = Window.GetWidth();
+win_height = Window.GetHeight();
+
+// define the center of the screen
+ww_half = win_width / 2;
+wh_half = win_height / 2;
+
+
+/*This section defines the elements of the xbmc logo.  Commenting is thorough
+*for the first element, and can be applied to the rest of the elements in this
+*section*/  
+
+// define image file for the xbmc logo
+sourceImage = Image ("xbmc.png");
+
+// get the size of the image
+xbmc_height = sourceImage.GetHeight();
+
+// define scalar value for the image as 1/6 vertical screen resolution. 
+xbmc_scale = (win_height / (xbmc_height * 6));
+
+// define the scaled height and width values
+newxbmc_width = sourceImage.GetWidth() * xbmc_scale;
+newxbmc_height = xbmc_height * xbmc_scale;
+
+// define the scaled image
+scaledImage = sourceImage.Scale (newxbmc_width, newxbmc_height);
+
+// send the scaled image to the sprite so we can play with it later
+xbmcLogo.sprite = Sprite (scaledImage);
+
+// anchor the vert & horiz position of the element to the center of the screen. 
+//note that Plymouth treats the anchor point of the element as the top left 
+xbmcLogo.sprite.SetY (wh_half - (newxbmc_height / 2));
+xbmcLogo.sprite.SetX (ww_half - (newxbmc_width / 2));
+
+// set the layering of the element. > #'s = toward top, < #'s toward bottom
+xbmcLogo.sprite.SetZ (2);
+
+// set the opacity of the element to fully opaque. Possible values are btw 0 & 1
+xbmcLogo.sprite.SetOpacity (1);
+
+sourceImage = Image ("media_center.png");
+media_height = sourceImage.GetHeight();
+// note the scalar defined here is 1/24 vertical screen resolution.
+media_scale = (win_height / (media_height * 24));
+newmedia_width = sourceImage.GetWidth() * media_scale;
+newmedia_height = media_height * media_scale;
+scaledImage = sourceImage.Scale (newmedia_width, newmedia_height);
+mediaCenter.sprite = Sprite (scaledImage);
+mediaCenter.sprite.SetY (wh_half + (newxbmc_height / 2) + (newmedia_height / 2));
+mediaCenter.sprite.SetX (ww_half - (newmedia_width / 2));
+mediaCenter.sprite.SetZ (2);
+mediaCenter.sprite.SetOpacity (1);
+
+sourceImage = Image ("water.png");
+water_height = sourceImage.GetHeight();
+water_scale = (win_height /(water_height * 6));
+newwater_width = sourceImage.GetWidth() * water_scale;
+newwater_height = water_height * water_scale;
+scaledImage = sourceImage.Scale (newwater_width, newwater_height);
+water.sprite = Sprite (scaledImage);
+water.sprite.SetY (wh_half - (newwater_height / 2));
+water.sprite.SetZ (-1);
+water.sprite.SetOpacity (1);
+
+sourceImage = Image ("mask.png");
+newmask_width = ww_half - (newxbmc_width / 2);
+scaledImage = sourceImage.Scale (newmask_width, win_height);
+lmask.sprite = Sprite (scaledImage);
+rmask.sprite = Sprite (scaledImage);
+lmask.sprite.SetY (0);
+rmask.sprite.SetY (0);
+lmask.sprite.SetX (ww_half + (newxbmc_width / 2));
+rmask.sprite.SetX (0);
+lmask.sprite.SetZ (1);
+rmask.sprite.SetZ (1);
+lmask.sprite.SetOpacity (1);
+rmask.sprite.SetOpacity (1);
+
+/*This section defines animation values for the elements we setup in the 
+*previous section. Again, commenting is thorough for the first element and can 
+*be applied to the rest of the elements in this section*/ 
+
+//define an offset value to compensate for width of wavefront
+water_offset = newwater_width / 6;
+
+// define when to start and stop the animation. Possible values are btw 0 & 1
+water.animStart = 0;
+water.animEnd = 1;
+
+// define the horizontal start position of the element as left edge of xbmc
+water.startPos = (ww_half - (newxbmc_width / 2)) - newwater_width;
+
+// define the horizontal end position of the element as right edge of xbmc
+water.endPos = ((ww_half + (newxbmc_width / 2)) - newwater_width) + water_offset;
+
+
+/*This section defines the functions that allow us to actually move the images 
+*to the places on screen that we have defined in the previous two sections*/
+
+// define a variable that calls on boot progress to time animations against
+Plymouth.SetBootProgressFunction(progress_callback);
+
+// function to re-map the position of an element on screen as booting progresses
+fun remap (val, imin, imax, omin, omax) {
+    return (((val - imin) / (imax - imin)) * (omax - omin)) + omin;
+}
+
+// function to draw elment at remapped postition as booting progresses.  
+fun progress_callback (d, p) {
+
+    p = (p * 100.0) / 15.0;
+
+    if (p >= water.animStart && p <= water.animEnd) {
+        a = remap (p, water.animStart, water.animEnd, 0, 1);
+        b = water.startPos - ((water.startPos - water.endPos) * a);
+        water.sprite.SetX (b);
+    }
+}

@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name= XBMC wave
+Description= XBMC logo as the element water with waves
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/xbmc-wave
+ScriptFile=/lib/plymouth/themes/xbmc-wave/xbmc-wave.script
+
