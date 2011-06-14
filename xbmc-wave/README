@@ -1,12 +1,12 @@
-xbmc-water v0.1 by madsailor
+xbmc-wave v0.1 by madsailor
 
 This theme is public domain.  Free to change, add, distribute or what ever...
 
 Installation
 ============
-1)Copy the xbmc-water folder to /lib/plymouth/themes
-2)Run: sudo update-alternatives --install /lib/plymouth/themes/default.plymouth default.plymouth /lib/plymouth/themes/xbmc-water/xbmc-water.plymouth 100
-3)Run: sudo update-alternatives --config default.plymouth , and choose the xbmc-water theme
+1)Copy the xbmc-wave folder to /lib/plymouth/themes
+2)Run: sudo update-alternatives --install /lib/plymouth/themes/default.plymouth default.plymouth /lib/plymouth/themes/xbmc-wave/xbmc-wave.plymouth 100
+3)Run: sudo update-alternatives --config default.plymouth , and choose the xbmc-wave theme
 4)Run: sudo update-initramfs -u
 5)Enjoy!
 
